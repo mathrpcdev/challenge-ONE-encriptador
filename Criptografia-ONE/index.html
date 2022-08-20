@@ -13,12 +13,39 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
+
+
 <body>
+    <main class="main">
+        <img src="imgs/logoAlura.svg" class="logo" onclick="home()">
+        <section class="div-principal">
+            <form action="">
+                <textarea class="input-texto" type="text" name="input-texto" maxlength="120" id="input-texto"
+                    placeholder="Digite seu texto aqui"></textarea>
+                <div class="form-group">
+                    <img src="imgs/!.svg" class="img-alerta">
+                    <label for="input-texto">Apenas letras minúsculas e sen acento.*</label>
+                </div>
+                <div class="botoes-div">
+                    <input class="btn-criptografar" type="submit" value="Criptografar" id="btn-criptografar">
+                    <input class="btn-descriptografar" type="submit" value="Descriptografar" id="btn-descriptografar">
+                </div>
+            </form>
+        </section>
 
-    <button type="text">Criptografar</button>
 
-    <button type="text">Descriptografar</button>
-
+        <section class="message-box">
+            <div id="div-desaparece" class="message-box-div">
+                <img src="imgs/mensagem.svg">
+                <h2>Nenhuma mensagem encontrada</h2>
+                <h3>Digite um texto que você deseja para criptografar e/ou descriptografar.</h3>
+            </div>
+            <div id="div-aparece">
+                <textarea class="div-mensagem" type="text" id="mensagem" placeholder="Nenhuma mensagem"></textarea>
+                <input class="btn-copiar" type="submit" value="Copiar" id="btn-copiar">
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
