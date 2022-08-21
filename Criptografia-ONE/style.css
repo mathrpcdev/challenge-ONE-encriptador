@@ -22,7 +22,7 @@
 
 }
 
-.btn-criptografar {
+.btnCriptografar {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -55,7 +55,7 @@
 
 }
 
-.btn-descriptografar {
+.btnDescriptografar {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -365,8 +365,8 @@ label {
         top: 32rem;
     }
 
-    .btn-criptografar,
-    .btn-descriptografar {
+    .btnCriptografar,
+    .btnDescriptografar {
         font-size: 24px;
         height: 65px;
     }
@@ -429,8 +429,8 @@ label {
         top: 30rem;
     }
 
-    .btn-criptografar,
-    .btn-descriptografar {
+    .btnCriptografar,
+    .btnDescriptografar {
         width: 280px;
         font-size: 24px;
         height: 65px;
@@ -514,8 +514,8 @@ label {
         font-size: 12px;
     }
 
-    .btn-criptografar,
-    .btn-descriptografar {
+    .btnCriptografar,
+    .btnDescriptografar {
         width: 320px;
         font-size: 20px;
         height: 65px;
