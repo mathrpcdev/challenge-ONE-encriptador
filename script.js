@@ -1,53 +1,85 @@
-const inputTexto = document.querySelector(".input-texto");
-const mensagem = document.querySelector(".div-mensagem");
+const input = document.querySelector("#input-texto");
+const btnCriptografar = document.querySelector("#btn-criptografar");
+const btnDescriptografar = document.querySelector("#btn-descriptografar");
+const mensagem = document.querySelector("#mensagem");
+const btnCopiar = document.querySelector("#btn-copiar");
 
+//captura o id e esconde a div-aparece da tela
+document.getElementById("div-aparece").style.display = 'none';
+inputverificar();
 
-function btnCriptografar() {
-    const textoEncriptado = encriptar(inputTexto.value)
-    mensagem.value = textoEncriptado
-    document.style.backgroundImage = "none"
-
+// caputura o id no momento do click e direciona para o metódo que encripta o texto
+document.getElementById('btnCriptografar').onclick = (e) => {
+  e.preventDefault();
+  const textoEncriptado = encriptar(input.value.toLowerCase());
+  mensagem.value = textoEncriptado;
+  input.value = "";
+  aparece()
 }
 
-function btnCriptografar(stringEncriptada) {
-    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringEncriptada = stringEncriptada.toLowerCase();
+// caputura o id no momento do click e direciona para o metódo que desencripta o texto
+document.getElementById('btnDescriptografar').onclick = (e) => {
+  e.preventDefault();
+  const textoDecriptado = decodificar(input.value);
+  mensagem.value = textoDecriptado;
+  input.value = "";
+  aparece()
+}
 
-    for (let i = 0; i < matrizCodigo.length; i++) {
-        if (stringEncriptada.includes(matrizCodigo[i][0])) {
-            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1])
-        }
+// caputura o id no momento do click e faz a validação de copiar o texto
+document.getElementById('btn-copiar').onclick = (e) => {
+  e.preventDefault();
+  const mensagem = document.querySelector("#mensagem");
+  mensagem.select();
+  navigator.clipboard.writeText(mensagem.value)
+  mensagem.value = "";
+}
+
+//encripta o texto
+function encriptar(stringEncriptada) {
+  let matrixCode = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]]
+  stringEncriptada = stringEncriptada.toLowerCase()
+  for (let i = 0; i < matrixCode.length; i++) {
+    if (stringEncriptada.includes(matrixCode[i][0])) {
+      stringEncriptada = stringEncriptada.replaceAll(matrixCode[i][0], matrixCode[i][1])
     }
-    return stringEncriptada;
+  }
+  return stringEncriptada
 }
 
-function btnDescriptografar() {
-    const textoDesencriptado = desencriptar(inputTexto.value)
-    mensagem.value = textoEncriptado
-    mensagem.style.backgroundImage = "none"
-    aparece()
-}
-
-function desencriptar(stringDesencriptada) {
-    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringDesencriptada = stringDesencriptada.toLowerCase();
-
-    for (let i = 0; i < matrizCodigo.length; i++) {
-        if (stringDesencriptada.includes(matrizCodigo[i][1])) {
-            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0])
-        }
+//decodifica o texto
+function decodificar(stringDecriptada) {
+  let matrixCode = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]]
+  stringDecriptada = stringDecriptada.toLowerCase()
+  for (let i = 0; i < matrixCode.length; i++) {
+    if (stringDecriptada.includes(matrixCode[i][1])) {
+      stringDecriptada = stringDecriptada.replaceAll(matrixCode[i][1], matrixCode[i][0])
     }
-
-    return stringDesencriptada;
+  }
+  return stringDecriptada
 }
 
-function copiar() {
-    const msg = document.querySelector(".mensagem");
-    msg.select();
-    navigator.clipboard.writeText(msg.value)
-    msg.value = "";
-}
-
+//manipula o dom para que alguns componentes apareçam e desapareçam da tela
 function aparece() {
-    document.getElementById("div-aparece").style.display = 'block';
+  document.getElementById("div-desaparece").style.display = 'none';
+  document.getElementById("div-aparece").style.display = 'block';
+}
+
+//manipula o dom para que alguns componentes apareçam e desapareçam da tela
+function home() {
+  document.getElementById("div-aparece").style.display = 'none';
+  document.getElementById("div-desaparece").style.display = 'block';
+}
+
+
+//verifica qual foi o texto digitado pelo usuário
+function inputverificar() {
+  var inputPalavra = document.querySelector("#input-texto");
+  inputPalavra.addEventListener("keypress", function (e) {
+    var keyCode = (e.keyCode ? e.keyCode : e.which);
+
+    if (keyCode > 47 && keyCode < 65) {
+      e.preventDefault();
+    }
+  });
 }
